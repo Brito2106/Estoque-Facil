@@ -1,3 +1,5 @@
+require("pg");
+
 const { Sequelize } = require("sequelize");
 const path = require("path");
 
