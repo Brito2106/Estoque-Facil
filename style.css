@@ -1,0 +1,511 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f3f5f7;
+    color: #1f2937;
+}
+
+
+/* =========================
+   CABEÇALHO
+========================= */
+
+header {
+    background: #1f6f43;
+    color: white;
+    padding: 28px 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+header h1 {
+    margin: 0 0 5px;
+}
+
+header p {
+    margin: 0;
+    opacity: 0.9;
+}
+
+
+/* =========================
+   ESTRUTURA PRINCIPAL
+========================= */
+
+main {
+    width: min(1200px, 94%);
+    margin: 28px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: stretch;
+}
+
+
+/* =========================
+   CARDS
+========================= */
+
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+h2 {
+    margin-top: 0;
+}
+
+
+/* =========================
+   CAMPOS
+========================= */
+
+label {
+    display: block;
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 15px;
+    margin-bottom: 7px;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 11px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 7px;
+    font-size: 15px;
+    background: white;
+    color: #1f2937;
+}
+
+input:focus,
+select:focus {
+    outline: 2px solid #a7d9bb;
+    border-color: #1f6f43;
+}
+
+
+/* =========================
+   BOTÕES
+========================= */
+
+button {
+    border: 0;
+    border-radius: 7px;
+    padding: 11px 17px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    opacity: 0.92;
+}
+
+#btnContinuar,
+#btnAgenda,
+#btnConfirmarEntrega {
+    margin-top: 18px;
+    background: #222;
+    color: white;
+}
+
+
+/* =========================
+   HORÁRIOS
+========================= */
+
+.horarios-container {
+    margin-top: 0;
+}
+
+#manha,
+#tarde {
+    margin-top: 20px;
+}
+
+.horario {
+    margin: 5px;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+.horario.livre {
+    background: #222;
+    color: white;
+}
+
+.horario.livre:hover {
+    background: #111;
+}
+
+.horario.agendado {
+    background: #222;
+    color: white;
+}
+
+.horario.agendado:hover {
+    background: #444;
+}
+
+
+/* =========================
+   FORMULÁRIO DE ENTREGA
+========================= */
+
+.formulario-entrega {
+    width: min(1200px, 94%);
+    margin: 24px auto;
+}
+
+#horarioSelecionado {
+    font-weight: bold;
+    color: #1f6f43;
+}
+
+
+/* =========================
+   ITENS
+========================= */
+
+.item {
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 12px;
+}
+
+.item label {
+    margin-top: 0;
+}
+
+.item input {
+    margin-bottom: 10px;
+}
+
+#btnAdicionarItem {
+    background: #e8f3ec;
+    color: #1f6f43;
+    margin-top: 5px;
+}
+
+#btnAdicionarItem:hover {
+    background: #d7ebde;
+}
+
+
+/* =========================
+   AGENDA DO DIA
+========================= */
+
+#agendaDia {
+    width: 100%;
+}
+
+#listaAgenda {
+    margin-top: 20px;
+}
+
+#totalEntregas {
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.entrega-agenda {
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 18px;
+    margin-bottom: 12px;
+}
+
+.entrega-agenda h3 {
+    margin-top: 0;
+    color: #1f6f43;
+}
+
+.entrega-agenda p {
+    margin: 7px 0;
+}
+
+
+/* =========================
+   MODAL
+========================= */
+
+#modalEntrega {
+    display: none;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    z-index: 99999;
+
+    background: rgba(0, 0, 0, 0.55);
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}
+
+
+/* =========================
+   CAIXA DO MODAL
+========================= */
+
+#modalEntrega .modal-conteudo {
+    position: relative;
+
+    width: 100%;
+    max-width: 550px;
+
+    max-height: 85vh;
+
+    overflow-y: auto;
+
+    background: white;
+
+    padding: 30px;
+
+    border-radius: 15px;
+
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.25);
+
+    animation: abrirModal 0.2s ease;
+}
+
+
+/* =========================
+   ANIMAÇÃO
+========================= */
+
+@keyframes abrirModal {
+
+    from {
+        opacity: 0;
+        transform: translateY(-15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* =========================
+   FECHAR MODAL
+========================= */
+
+.fechar-modal {
+    position: absolute;
+
+    top: 10px;
+    right: 12px;
+
+    width: 35px;
+    height: 35px;
+
+    padding: 0;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #222;
+    color: white;
+
+    font-size: 24px;
+    line-height: 35px;
+
+    cursor: pointer;
+}
+
+.fechar-modal:hover {
+    background: #444;
+}
+
+
+/* =========================
+   DETALHES DA ENTREGA
+========================= */
+
+#detalhesEntrega {
+    margin-top: 15px;
+}
+
+#detalhesEntrega p {
+    margin: 10px 0;
+    line-height: 1.5;
+}
+
+#detalhesEntrega strong {
+    color: #111827;
+}
+
+#detalhesEntrega ul {
+    margin-top: 5px;
+    padding-left: 20px;
+}
+
+#detalhesEntrega li {
+    margin-bottom: 6px;
+}
+
+
+/* =========================
+   AÇÕES DO MODAL
+========================= */
+
+.acoes-entrega {
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+
+    margin-top: 25px;
+
+    padding-top: 20px;
+
+    border-top: 1px solid #e5e7eb;
+}
+
+.acoes-entrega button {
+    width: 100%;
+    padding: 12px;
+    font-size: 15px;
+}
+
+
+/* INICIAR */
+
+#btnIniciarEntrega {
+    background: #1f6f43;
+    color: white;
+}
+
+#btnIniciarEntrega:hover {
+    background: #185a35;
+}
+
+
+/* CONCLUIR */
+
+#btnConcluirEntrega {
+    background: #dff3e6;
+    color: #1f6f43;
+}
+
+#btnConcluirEntrega:hover {
+    background: #c9e8d3;
+}
+
+
+/* CANCELAR */
+
+#btnCancelarEntrega {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+#btnCancelarEntrega:hover {
+    background: #fecaca;
+}
+
+
+/* =========================
+   RESPONSIVIDADE
+========================= */
+
+@media (max-width: 650px) {
+
+    main {
+        width: 94%;
+        margin: 20px auto;
+    }
+
+    .card {
+        padding: 18px;
+    }
+
+    .horario {
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    .formulario-entrega {
+        width: 94%;
+    }
+
+    #modalEntrega {
+        padding: 12px;
+    }
+
+    #modalEntrega .modal-conteudo {
+        max-height: 90vh;
+        padding: 22px;
+        border-radius: 12px;
+    }
+
+}
+
+/* =========================
+   FORMULÁRIO DE EDIÇÃO
+========================= */
+
+.formulario-edicao {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #e5e7eb;
+}
+
+.formulario-edicao h3 {
+    margin-top: 0;
+    color: #1f6f43;
+}
+
+.formulario-edicao input,
+.formulario-edicao select {
+    margin-bottom: 10px;
+}
+
+.botoes-edicao {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+#btnSalvarEdicao {
+    background: #1f6f43;
+    color: white;
+}
+
+#btnSalvarEdicao:hover {
+    background: #185a35;
+}
+
+#btnCancelarEdicao {
+    background: #e5e7eb;
+    color: #374151;
+}
+
+#btnEditarEntrega {
+    background: #e8f3ec;
+    color: #1f6f43;
+}
+
+#btnEditarEntrega:hover {
+    background: #d7ebde;
+}
