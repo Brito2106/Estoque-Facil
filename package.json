@@ -1,11 +1,12 @@
+
 {
   "name": "crud-produtos-sequelize",
   "version": "1.0.0",
-  "description": "Aplicação CRUD de produtos com Node.js, Express, Sequelize e SQLite.",
-  "main": "server.js",
+  "description": "Aplicação CRUD de produtos com Node.js, Express, Sequelize e PostgreSQL.",
+  "main": "src/index.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "node --watch server.js",
+    "start": "node local-server.js",
+    "dev": "node --watch local-server.js",
     "build": "node -e \"console.log('Build concluído: arquivos estáticos e API prontos para deploy.')\""
   },
   "dependencies": {
